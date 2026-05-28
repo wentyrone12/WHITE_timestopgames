@@ -1,152 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Time Match Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Match Game</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Orbitron', sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
 
-body{
-    background: radial-gradient(circle at top, #011507, #000000);
-    color:#00ffcc;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    padding:20px;
-}
+        body {
+            background: radial-gradient(circle at top, #011507, #000000);
+            color: #00ffcc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
 
-.container{
-    width:100%;
-    max-width:400px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    border:1px solid rgba(0,255,200,0.2);
-    border-radius:20px;
-    padding:30px;
-    text-align:center;
-    box-shadow: 0 0 30px rgba(0,255,200,0.1);
-}
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 255, 200, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 255, 200, 0.1);
+        }
 
-h1{
-    font-size:22px;
-    margin-bottom:20px;
-}
+        h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
 
-#targetTime{
-    font-size:18px;
-    opacity:0.8;
-}
+        #targetTime {
+            font-size: 18px;
+            opacity: 0.8;
+        }
 
-#currentTime{
-    font-size:55px;
-    margin:20px 0;
-    font-weight:bold;
-    color:#00ff88;
-}
-.buttons{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    margin-top:10px;
-}
+        #currentTime {
+            font-size: 55px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #00ff88;
+        }
 
-button{
-    flex:1;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.2s;
-    font-weight:bold;
-}
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-#startBtn{
-    background:#00ff88;
-    color:black;
-}
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: bold;
+        }
 
-#startBtn:hover{
-    background:#00cc6a;
-}
+        #startBtn {
+            background: #00ff88;
+            color: black;
+        }
 
-#stopBtn{
-    background:#ff3b3b;
-    color:white;
-}
+        #startBtn:hover {
+            background: #00cc6a;
+        }
 
-#stopBtn:hover{
-    background:#cc2c2c;
-}
+        #stopBtn {
+            background: #ff3b3b;
+            color: white;
+        }
 
-button:disabled{
-    opacity:0.5;
-    cursor:not-allowed;
-}
+        #stopBtn:hover {
+            background: #cc2c2c;
+        }
 
-#result{
-    margin-top:20px;
-    font-size:18px;
-}
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-.nametag{
-    font-size: 10px;
-    position: absolute;
-    color: gray;
-    bottom: 50px;
-}
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
 
-@media(max-width:480px){
-    .container{
-        padding:20px;
-    }
+        .nametag {
+            font-size: 10px;
+            position: absolute;
+            color: gray;
+            bottom: 50px;
+        }
 
-    #currentTime{
-        font-size:45px;
-    }
+        @media(max-width:480px) {
+            .container {
+                padding: 20px;
+            }
 
-    button{
-        font-size:14px;
-        padding:12px;
-    }
-}
-</style>
+            #currentTime {
+                font-size: 45px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+
+        /* 🔥 HISTORY */
+
+        .history-box {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 18px;
+            padding: 15px;
+            max-height: 260px;
+            overflow: hidden;
+        }
+
+        .history-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .history-top h3 {
+            font-size: 16px;
+            color: #00ffcc;
+        }
+
+        .history-top button {
+            padding: 8px;
+            border-radius: 10px;
+            background: #ff4444;
+            color: white;
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #historyList {
+            max-height: 180px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        #historyList::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #historyList::-webkit-scrollbar-thumb {
+            background: #00ff88;
+            border-radius: 20px;
+        }
+
+        .history-item {
+            padding: 12px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+            animation: fadeHistory .3s ease;
+            border: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .history-green {
+            background: rgba(0, 255, 136, .12);
+            border-color: rgba(0, 255, 136, .3);
+            color: #00ff88;
+        }
+
+        .history-yellow {
+            background: rgba(255, 215, 0, .12);
+            border-color: rgba(255, 215, 0, .3);
+            color: gold;
+        }
+
+        .history-red {
+            background: rgba(255, 0, 0, .12);
+            border-color: rgba(255, 0, 0, .25);
+            color: #ff6666;
+        }
+
+        .history-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        @keyframes fadeHistory {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @media(max-width:480px) {
+
+            .history-box {
+                max-height: 220px;
+            }
+
+            #historyList {
+                max-height: 150px;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>⏱ Time Match Game</h1>
+        <h1>⏱ Time Match Game</h1>
 
-    <h2 id="targetTime">Target: --</h2>
-    <h2 id="currentTime">0.00</h2>
+        <h2 id="targetTime">Target: --</h2>
+        <h2 id="currentTime">0.00</h2>
+        <div class="buttons">
+            <button id="startBtn">START</button>
+            <button id="stopBtn" disabled>STOP</button>
+        </div>
 
-    <div class="buttons">
-        <button id="startBtn">START</button>
-        <button id="stopBtn" disabled>STOP</button>
+        <h2 id="result"></h2>
+
+        <div class="history-box">
+
+            <div class="history-top">
+                <h3 style="margin-right: 80px;">Match History</h3>
+                <button class="btnclear" onclick="clearHistory()">CLEAR</button>
+            </div>
+
+            <div id="historyList"></div>
+
+        </div>
+
     </div>
 
-    <h2 id="result"></h2>
+    <div class="nametag">Made by Wenxyz</div>
 
-</div>
+    <audio id="winSound">
+        <source src="win.mp3">
+    </audio>
 
-<div class="nametag">Made by Wenxyz</div>
-
-<audio id="winSound">
-    <source src="win.mp3">
-</audio>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
